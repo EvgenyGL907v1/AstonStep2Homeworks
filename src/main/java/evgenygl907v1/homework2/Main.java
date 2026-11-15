@@ -3,10 +3,10 @@ package evgenygl907v1.homework2;
 import evgenygl907v1.homework2.config.DBConfiguration;
 import evgenygl907v1.homework2.dao.UserDao;
 import evgenygl907v1.homework2.dao.UserDataAccessObject;
+import evgenygl907v1.homework2.service.DefaultUserService;
 import evgenygl907v1.homework2.ui.UIConsole;
 import org.hibernate.SessionFactory;
 import java.util.Scanner;
-import java.util.logging.Level;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +23,10 @@ public class Main {
             sessionFactory = DBConfiguration.buildSessionFactory();
 
             UserDao userDao = new UserDataAccessObject(sessionFactory);
+            DefaultUserService service = new DefaultUserService(userDao);
             scanner = new Scanner(System.in);
-            UIConsole app = new UIConsole(userDao, scanner);
+
+            UIConsole app = new UIConsole(service, scanner);
 
             app.run();
         } catch (Exception e) {
