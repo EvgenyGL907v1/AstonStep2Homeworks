@@ -1,14 +1,22 @@
-package evgenygl907v1.homework2;
+package evgenygl907v1.homework2.ui;
+
+import evgenygl907v1.homework2.dao.UserDao;
+import evgenygl907v1.homework2.dao.UserDataAccessObject;
+import evgenygl907v1.homework2.entity.User;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class UIConsole {
-    private final UserDataAccessObject userDao;
+    private static final Logger log = LoggerFactory.getLogger(UIConsole.class);
+    private final UserDao userDao;
     private final Scanner scanner;
 
-    public UIConsole(UserDataAccessObject userDao, Scanner scanner) {
+    public UIConsole(UserDao userDao, Scanner scanner) {
         this.userDao = Objects.requireNonNull(userDao, "userDao не может быть null");
         this.scanner = Objects.requireNonNull(scanner, "scanner не может быть null");
     }
@@ -32,10 +40,13 @@ public class UIConsole {
                     default -> System.out.println("Неизвестная команда.");
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println("[WARN] Ошибка валидации: " + e.getMessage());
+                log.warn("Ошибка валидации: {}", e.getMessage());
+                System.out.println("Ошибка валидации: " + e.getMessage());
             } catch (IllegalStateException e) {
+                log.warn("{}", e.getMessage());
                 System.out.println("[ERROR] " + e.getMessage());
             } catch (Exception e) {
+                log.warn("{}", e.getMessage());
                 System.out.println("[ERROR] Непредвиденная ошибка: " + e.getMessage());
                 e.printStackTrace(System.out);
             }

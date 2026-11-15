@@ -14,7 +14,7 @@
 
 
 
-        <mapping class="evgenygl907v1.homework2.User"/>
+        <mapping class="evgenygl907v1.homework2.entity.User"/>
 
     </session-factory>
 </hibernate-configuration>

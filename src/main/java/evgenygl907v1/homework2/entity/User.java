@@ -1,4 +1,4 @@
-package evgenygl907v1.homework2;
+package evgenygl907v1.homework2.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

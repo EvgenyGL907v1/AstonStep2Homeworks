@@ -1,9 +1,14 @@
-package evgenygl907v1.homework2;
+package evgenygl907v1.homework2.config;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DBConfiguration {
+    private static final Logger log = LoggerFactory.getLogger(DBConfiguration.class);
+
     private DBConfiguration() {}
 
     public static SessionFactory buildSessionFactory() {
@@ -12,7 +17,7 @@ public class DBConfiguration {
                     .configure("hibernate.cfg.xml")
                     .buildSessionFactory();
         } catch (RuntimeException e) {
-            System.out.println("Не удалось создать SessionFactory: " + e.getMessage());
+            log.error("Не удалось создать SessionFactory", e);
             throw e;
         }
     }
