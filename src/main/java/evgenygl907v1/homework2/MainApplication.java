@@ -1,22 +1,19 @@
 package evgenygl907v1.homework2;
 
-import evgenygl907v1.homework2.config.DBConfiguration;
-import evgenygl907v1.homework2.dao.UserDao;
-import evgenygl907v1.homework2.dao.UserDataAccessObject;
-import evgenygl907v1.homework2.service.DefaultUserService;
-import evgenygl907v1.homework2.ui.UIConsole;
-import org.hibernate.SessionFactory;
-import java.util.Scanner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class Main {
-    private static final Logger log = LoggerFactory.getLogger(Main.class);
+@SpringBootApplication
+public class MainApplication {
+    //private static final Logger log = LoggerFactory.getLogger(MainApplication.class);
 
     public static void main(String[] args) {
+        SpringApplication.run(MainApplication.class, args);
+
+
         //java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
 
+        /*
         SessionFactory sessionFactory = null;
         Scanner scanner = null;
         try {
@@ -38,6 +35,6 @@ public class Main {
                 sessionFactory.close();
                 log.info("SessionFactory закрыта");
             }
-        }
+        }*/
     }
 }
